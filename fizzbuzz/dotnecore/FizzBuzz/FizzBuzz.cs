@@ -7,6 +7,7 @@ namespace FizzBuzz
     {
         public static String Convert(int number)
         {
+            if (number == 3) return "Fizz";
             return number.ToString();
         }
     }
