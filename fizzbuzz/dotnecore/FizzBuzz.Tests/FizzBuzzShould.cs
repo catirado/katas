@@ -5,22 +5,13 @@ namespace FizzBuzz.Tests
 {
     public class FizzBuzzShould
     {
-        [Fact]
-        public void return_string_1_when_i_fizzbuzz_the_number_1()
+        [Theory]
+        [InlineData(1, "1")]
+        [InlineData(2, "2")]
+        [InlineData(4, "4")]
+        public void return_the_representing_string_when_convert_a_regular_number(int number, String expected)
         {
-            Assert.Equal("1", FizzBuzz.Convert(1));
-        }
-
-        [Fact]
-        public void return_string_2_when_i_fizzbuzz_the_number_2()
-        {
-            Assert.Equal("2", FizzBuzz.Convert(2));
-        }
-
-        [Fact]
-        public void return_string_4_when_i_fizzbuzz_the_number_4()
-        {
-            Assert.Equal("4", FizzBuzz.Convert(4));
+            Assert.Equal(expected, FizzBuzz.Convert(number));
         }
     }
 }
