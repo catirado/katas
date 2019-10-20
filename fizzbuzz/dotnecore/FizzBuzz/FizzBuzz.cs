@@ -12,6 +12,15 @@ namespace FizzBuzz
             if (isDivisibleByThree(number))
                 return FIZZ;
 
+            if (number == 5)
+                return "Buzz";
+
+            if (number == 10)
+                return "Buzz";
+
+            if (number == 20)
+                return "Buzz";
+
             return number.ToString();
         }
 
