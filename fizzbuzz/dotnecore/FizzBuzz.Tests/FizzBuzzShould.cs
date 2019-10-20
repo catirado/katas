@@ -23,22 +23,14 @@ namespace FizzBuzz.Tests
             Assert.Equal("Fizz", FizzBuzz.Convert(number));
         }
 
-        [Fact]
-        public void return_Buzz_when_i_fizzbuzz_the_number_5()
+        [Theory]
+        [InlineData(5)]
+        [InlineData(10)]
+        [InlineData(20)]
+        public void return_Buzz_when_convert_a_number_multiple_of_5(int number)
         {
-            Assert.Equal("Buzz", FizzBuzz.Convert(5));
+            Assert.Equal("Buzz", FizzBuzz.Convert(number));
         }
 
-        [Fact]
-        public void return_Buzz_when_i_fizzbuzz_the_number_10()
-        {
-            Assert.Equal("Buzz", FizzBuzz.Convert(10));
-        }
-
-        [Fact]
-        public void return_Buzz_when_i_fizzbuzz_the_number_20()
-        {
-            Assert.Equal("Buzz", FizzBuzz.Convert(20));
-        }
     }
 }

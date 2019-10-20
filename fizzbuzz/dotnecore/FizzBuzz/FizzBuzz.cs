@@ -6,22 +6,22 @@ namespace FizzBuzz
     public class FizzBuzz
     {
         private const string FIZZ = "Fizz";
+        private const string BUZZ = "Buzz";
 
         public static String Convert(int number)
         {
             if (isDivisibleByThree(number))
                 return FIZZ;
 
-            if (number == 5)
-                return "Buzz";
-
-            if (number == 10)
-                return "Buzz";
-
-            if (number == 20)
-                return "Buzz";
+            if (isDivisibleByFive(number))
+                return BUZZ;
 
             return number.ToString();
+        }
+
+        private static bool isDivisibleByFive(int number)
+        {
+            return number % 5 == 0;
         }
 
         private static bool isDivisibleByThree(int number)
