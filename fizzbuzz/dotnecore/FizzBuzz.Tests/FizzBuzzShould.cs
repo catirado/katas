@@ -14,22 +14,13 @@ namespace FizzBuzz.Tests
             Assert.Equal(expected, FizzBuzz.Convert(number));
         }
 
-        [Fact]
-        public void return_Fizz_when_i_fizzbuzz_the_number_3()
+        [Theory]
+        [InlineData(3)]
+        [InlineData(6)]
+        [InlineData(9)]
+        public void return_Fizz_when_convert_a_number_divisible_by_three(int number)
         {
-            Assert.Equal("Fizz", FizzBuzz.Convert(3));
-        }
-
-        [Fact]
-        public void return_Fizz_when_i_fizzbuzz_the_number_6()
-        {
-            Assert.Equal("Fizz", FizzBuzz.Convert(6));
-        }
-
-        [Fact]
-        public void return_Fizz_when_i_fizzbuzz_the_number_9()
-        {
-            Assert.Equal("Fizz", FizzBuzz.Convert(9));
+            Assert.Equal("Fizz", FizzBuzz.Convert(number));
         }
     }
 }
