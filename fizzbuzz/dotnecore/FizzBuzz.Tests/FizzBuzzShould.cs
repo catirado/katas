@@ -32,5 +32,13 @@ namespace FizzBuzz.Tests
             Assert.Equal("Buzz", FizzBuzz.Convert(number));
         }
 
+        [Theory]
+        [InlineData(15)]
+        [InlineData(30)]
+        [InlineData(45)]
+        public void return_FizzBuzz_when_convert_a_number_multiple_of_3_and_multiple_of_5(int number)
+        {
+            Assert.Equal("FizzBuzz", FizzBuzz.Convert(number));
+        }
     }
 }
