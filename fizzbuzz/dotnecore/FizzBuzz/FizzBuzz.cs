@@ -5,12 +5,19 @@ namespace FizzBuzz
 {
     public class FizzBuzz
     {
+        private const string FIZZ = "Fizz";
+
         public static String Convert(int number)
         {
-            if (number == 3) return "Fizz";
-            if (number == 6) return "Fizz";
-            if (number == 9) return "Fizz";
+            if (isDivisibleByThree(number))
+                return FIZZ;
+
             return number.ToString();
+        }
+
+        private static bool isDivisibleByThree(int number)
+        {
+            return number % 3 == 0;
         }
     }
 }
