@@ -28,15 +28,9 @@ namespace FizzBuzz
             return isDivisibleByThree(number) && isDivisibleByFive(number);
         }
 
-        private static bool isDivisibleByThree(int number)
-        {
-            return number % 3 == 0;
-        }
+        private static bool isDivisibleByThree(int number) => number % 3 == 0;
 
-        private static bool isDivisibleByFive(int number)
-        {
-            return number % 5 == 0;
-        }
+        private static bool isDivisibleByFive(int number) => number % 5 == 0;
 
     }
 }
