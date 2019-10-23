@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatsCalculator.Tests", "StatsCalculator.Tests\StatsCalculator.Tests.csproj", "{65954C6A-4AB6-4667-A444-3CB626BF7700}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatsCalculator", "StatsCalculator\StatsCalculator.csproj", "{87DE866C-CEBB-4961-819A-595FDFAA627C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65954C6A-4AB6-4667-A444-3CB626BF7700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65954C6A-4AB6-4667-A444-3CB626BF7700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65954C6A-4AB6-4667-A444-3CB626BF7700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65954C6A-4AB6-4667-A444-3CB626BF7700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87DE866C-CEBB-4961-819A-595FDFAA627C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87DE866C-CEBB-4961-819A-595FDFAA627C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87DE866C-CEBB-4961-819A-595FDFAA627C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87DE866C-CEBB-4961-819A-595FDFAA627C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
