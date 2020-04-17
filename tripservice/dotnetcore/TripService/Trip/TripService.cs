@@ -13,13 +13,15 @@ namespace ContosoTrips.Trips
             {
                 return user.IsFriendOf(loggedUser) ?
                     GetTripsBy(user) :
-                    new List<Trip>();
+                    NoTrips();
             }
             else
             {
                 throw new UserNotLoggedInException();
             }
         }
+
+        private List<Trip> NoTrips() => new List<Trip>();
 
         protected virtual List<Trip> GetTripsBy(User user)
         {
