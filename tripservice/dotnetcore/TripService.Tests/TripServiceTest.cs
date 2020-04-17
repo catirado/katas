@@ -12,20 +12,28 @@ namespace TripServiceTests
 {
     public class trip_service_should
     {
+        private static User loggedInUser;
+
+        private static User GUEST = null;
+
         [Fact]
-        public void not_allow_to_get_trips_to_not_logged_in_user()
+        public void not_allow_to_get_trips_to_not_logged_in_users()
         {
-            var tripService = new TestableTripService();
+            TripService tripService = new TestableTripService();
 
-            Invoking(() => tripService.GetTripsByUser(null)).Should().Throw<UserNotLoggedInException>();            
+            loggedInUser = GUEST;
+
+            Invoking(() => tripService.GetTripsByUser(loggedInUser)).Should().Throw<UserNotLoggedInException>();            
+        }
+
+        private class TestableTripService : TripService
+        {
+            protected override User GetLoggedInUser()
+            {
+                return loggedInUser;
+            }
         }
     }
 
-    public class TestableTripService : TripService
-    {
-        protected override User GetLoggedInUser()
-        {
-            return null;
-        }
-    }
+    
 }
