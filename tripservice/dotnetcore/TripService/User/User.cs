@@ -31,16 +31,7 @@ namespace ContosoTrips.Users
 
         public bool IsFriendOf(User user)
         {
-            bool isFriend = false;
-            foreach(User friend in GetFriends())
-            {
-                if (friend.Equals(user))
-                {
-                    isFriend = true;
-                    break;
-                }
-            }
-            return isFriend;
+            return friends.Contains(user);
         }
     }
 }
