@@ -10,10 +10,7 @@ namespace ContosoTrips.Trips
         {
             User loggedUser = GetLoggedInUser();
 
-            if (loggedUser == null)
-            {
-                throw new UserNotLoggedInException();
-            }
+            Ensure.NotNull<UserNotLoggedInException>(loggedUser, "The user is not logged in");
 
             return user.IsFriendOf(loggedUser) ?
                 GetTripsBy(user) :
