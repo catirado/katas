@@ -13,24 +13,25 @@ namespace ContosoTrips.Tests
     public class trip_service_should
     {
         private readonly int ZERO_TRIPS = 0;
-        private static User loggedInUser;
         private static User GUEST = null;
         private static User UNUSED_USER = null;
         private static User REGISTERED_USER = new User();
-        private User ANOTHER_USER = new User();
-        private Trip TO_LONDON = new Trip();
-        private Trip TO_KIOTO = new Trip();
+        private static User ANOTHER_USER = new User();
+        private static Trip TO_LONDON = new Trip();
+        private static Trip TO_KIOTO = new Trip();
+        private IUserSession userSession;
         private TripService tripService;
         
         public trip_service_should()
         {
-            tripService = new TestableTripService();
+            userSession = Substitute.For<IUserSession>();
+            tripService = new TestableTripService(userSession);
         }
 
         [Fact]
         public void not_allow_to_get_trips_when_user_is_not_logged_on()
         {
-            loggedInUser = GUEST;
+            userSession.GetLoggedUser().Returns(GUEST);
 
             Invoking(() => tripService.GetTripsByUser(UNUSED_USER)).Should().Throw<UserNotLoggedInException>();            
         }
@@ -38,7 +39,7 @@ namespace ContosoTrips.Tests
         [Fact]
         private void not_allow_to_get_trips_to_users_that_are_not_friends()
         {
-            loggedInUser = REGISTERED_USER;
+            userSession.GetLoggedUser().Returns(REGISTERED_USER);
 
             var notFriend = Builder.User
                                 .WithFriends(ANOTHER_USER)
@@ -52,10 +53,10 @@ namespace ContosoTrips.Tests
         [Fact]
         private void allow_to_get_trips_when_user_is_a_friend()
         {
-            loggedInUser = REGISTERED_USER;
+            userSession.GetLoggedUser().Returns(REGISTERED_USER);
 
             var friend = Builder.User
-                                .WithFriends(loggedInUser, ANOTHER_USER)
+                                .WithFriends(REGISTERED_USER, ANOTHER_USER)
                                 .WithTrips(TO_LONDON, TO_KIOTO)
                                 .Build();
 
@@ -66,9 +67,9 @@ namespace ContosoTrips.Tests
 
         private class TestableTripService : TripService
         {
-            protected override User GetLoggedInUser()
+            public TestableTripService(IUserSession userSession) : base(userSession)
             {
-                return loggedInUser;
+
             }
 
             protected override List<Trip> GetTripsBy(User user)
