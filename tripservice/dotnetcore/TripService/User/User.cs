@@ -27,6 +27,20 @@ namespace ContosoTrips.Users
         public List<Trip> Trips()
         {
             return trips;
-        } 
+        }
+
+        public bool IsFriendOf(User user)
+        {
+            bool isFriend = false;
+            foreach(User friend in GetFriends())
+            {
+                if (friend.Equals(user))
+                {
+                    isFriend = true;
+                    break;
+                }
+            }
+            return isFriend;
+        }
     }
 }

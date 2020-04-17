@@ -13,14 +13,7 @@ namespace ContosoTrips.Trips
             bool isFriend = false;
             if (loggedUser != null)
             {
-                foreach (User friend in user.GetFriends())
-                {
-                    if (friend.Equals(loggedUser))
-                    {
-                        isFriend = true;
-                        break;
-                    }
-                }
+                isFriend = user.IsFriendOf(loggedUser);
                 if (isFriend)
                 {
                     tripList = GetTripsBy(user);
