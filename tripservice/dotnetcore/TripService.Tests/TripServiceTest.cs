@@ -20,12 +20,14 @@ namespace ContosoTrips.Tests
         private static Trip TO_LONDON = new Trip();
         private static Trip TO_KIOTO = new Trip();
         private IUserSession userSession;
+        private ITripDAO tripDao;
         private TripService tripService;
         
         public trip_service_should()
         {
             userSession = Substitute.For<IUserSession>();
-            tripService = new TestableTripService(userSession);
+            tripDao = Substitute.For<ITripDAO>();
+            tripService = new TripService(userSession, tripDao);
         }
 
         [Fact]
@@ -39,12 +41,12 @@ namespace ContosoTrips.Tests
         [Fact]
         private void not_allow_to_get_trips_to_users_that_are_not_friends()
         {
-            userSession.GetLoggedUser().Returns(REGISTERED_USER);
-
             var notFriend = Builder.User
                                 .WithFriends(ANOTHER_USER)
                                 .WithTrips(TO_LONDON, TO_KIOTO)
                                 .Build();
+
+            userSession.GetLoggedUser().Returns(REGISTERED_USER);
 
             var trips = tripService.GetTripsByUser(notFriend);
             trips.Should().HaveCount(ZERO_TRIPS);
@@ -53,31 +55,17 @@ namespace ContosoTrips.Tests
         [Fact]
         private void allow_to_get_trips_when_user_is_a_friend()
         {
-            userSession.GetLoggedUser().Returns(REGISTERED_USER);
-
             var friend = Builder.User
                                 .WithFriends(REGISTERED_USER, ANOTHER_USER)
                                 .WithTrips(TO_LONDON, TO_KIOTO)
                                 .Build();
 
+            userSession.GetLoggedUser().Returns(REGISTERED_USER);
+            tripDao.GetTripsBy(friend).Returns(friend.Trips());
+            
             var trips = tripService.GetTripsByUser(friend);
 
             trips.Should().HaveCount(friend.Trips().Count);
         }
-
-        private class TestableTripService : TripService
-        {
-            public TestableTripService(IUserSession userSession) : base(userSession)
-            {
-
-            }
-
-            protected override List<Trip> GetTripsBy(User user)
-            {
-                return user.Trips();
-            }
-        }
     }
-
-    
 }

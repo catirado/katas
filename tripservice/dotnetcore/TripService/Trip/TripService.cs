@@ -7,15 +7,17 @@ namespace ContosoTrips.Trips
     public class TripService
     {
         private readonly IUserSession userSession;
+        private readonly ITripDAO tripDAO;
 
-        public TripService()
+        public TripService():this(UserSession.GetInstance(), new TripDAO())
         {
-            this.userSession = UserSession.GetInstance();
+
         }
 
-        public TripService(IUserSession userSession)
+        public TripService(IUserSession userSession, ITripDAO tripDAO)
         {
             this.userSession = userSession ?? throw new System.ArgumentNullException(nameof(userSession));
+            this.tripDAO = tripDAO ?? throw new System.ArgumentNullException(nameof(tripDAO));
         }
 
         public List<Trip> GetTripsByUser(User user)
@@ -25,15 +27,10 @@ namespace ContosoTrips.Trips
             Ensure.NotNull<UserNotLoggedInException>(loggedUser, "The user is not logged in");
 
             return user.IsFriendOf(loggedUser) ?
-                GetTripsBy(user) :
+                tripDAO.GetTripsBy(user) :
                 NoTrips();
         }
 
         private List<Trip> NoTrips() => new List<Trip>();
-
-        protected virtual List<Trip> GetTripsBy(User user)
-        {
-            return TripDAO.FindTripsByUser(user);
-        }
     }
 }
