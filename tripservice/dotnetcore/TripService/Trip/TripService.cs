@@ -9,16 +9,15 @@ namespace ContosoTrips.Trips
         public List<Trip> GetTripsByUser(User user)
         {
             User loggedUser = GetLoggedInUser();
-            if (loggedUser != null)
-            {
-                return user.IsFriendOf(loggedUser) ?
-                    GetTripsBy(user) :
-                    NoTrips();
-            }
-            else
+
+            if (loggedUser == null)
             {
                 throw new UserNotLoggedInException();
             }
+
+            return user.IsFriendOf(loggedUser) ?
+                GetTripsBy(user) :
+                NoTrips();
         }
 
         private List<Trip> NoTrips() => new List<Trip>();
