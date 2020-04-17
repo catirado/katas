@@ -4,6 +4,7 @@ using ContosoTrips.Users;
 using FluentAssertions;
 using NSubstitute;
 using System;
+using System.Collections.Generic;
 using Xunit;
 using static FluentAssertions.FluentActions;
 
@@ -39,13 +40,28 @@ namespace ContosoTrips.Tests
         {
             loggedInUser = REGISTERED_USER;
 
-            var userNotFriend = Builder.User
+            var notFriend = Builder.User
                                 .WithFriends(ANOTHER_USER)
                                 .WithTrips(TO_LONDON, TO_KIOTO)
                                 .Build();
 
-            var trips = tripService.GetTripsByUser(userNotFriend);
+            var trips = tripService.GetTripsByUser(notFriend);
             trips.Should().HaveCount(ZERO_TRIPS);
+        }
+
+        [Fact]
+        private void allow_to_get_trips_when_user_is_a_friend()
+        {
+            loggedInUser = REGISTERED_USER;
+
+            var friend = Builder.User
+                                .WithFriends(loggedInUser, ANOTHER_USER)
+                                .WithTrips(TO_LONDON, TO_KIOTO)
+                                .Build();
+
+            var trips = tripService.GetTripsByUser(friend);
+
+            trips.Should().HaveCount(friend.Trips().Count);
         }
 
         private class TestableTripService : TripService
@@ -53,6 +69,11 @@ namespace ContosoTrips.Tests
             protected override User GetLoggedInUser()
             {
                 return loggedInUser;
+            }
+
+            protected override List<Trip> GetTripsBy(User user)
+            {
+                return user.Trips();
             }
         }
     }
