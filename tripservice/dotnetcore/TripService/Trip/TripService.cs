@@ -9,7 +9,7 @@ namespace ContosoTrips.Trips
         public List<Trip> GetTripsByUser(User user)
         {
             List<Trip> tripList = new List<Trip>();
-            User loggedUser = UserSession.GetInstance().GetLoggedUser();
+            User loggedUser = GetLoggedInUser();
             bool isFriend = false;
             if (loggedUser != null)
             {
@@ -31,6 +31,11 @@ namespace ContosoTrips.Trips
             {
                 throw new UserNotLoggedInException();
             }
+        }
+
+        protected virtual User GetLoggedInUser()
+        {
+            return UserSession.GetInstance().GetLoggedUser();
         }
     }
 }
