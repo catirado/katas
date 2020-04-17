@@ -10,10 +10,9 @@ namespace ContosoTrips.Trips
         {
             List<Trip> tripList = new List<Trip>();
             User loggedUser = GetLoggedInUser();
-            bool isFriend = false;
             if (loggedUser != null)
             {
-                isFriend = user.IsFriendOf(loggedUser);
+                bool isFriend = user.IsFriendOf(loggedUser);
                 if (isFriend)
                 {
                     tripList = GetTripsBy(user);
