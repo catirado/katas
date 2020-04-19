@@ -39,7 +39,6 @@ namespace GildedRose
 
             var app = new GildedRose(items);
 
-
             for (var i = 0; i < 31; i++)
             {
                 Console.WriteLine("-------- day " + i + " --------");

@@ -1,21 +1,34 @@
 ﻿using Xunit;
 using System.Collections.Generic;
 using ApprovalTests;
+using ApprovalTests.Combinations;
 using ApprovalTests.Reporters;
 
 namespace GildedRose.Tests
 {
     [UseReporter(typeof(DiffReporter))]
-    public class GildedRoseTest
+    public class gilded_rose_should
     {
         [Fact]
-        public void updateQuantity()
+        public void update_quality()
         {
-            var items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
-            GildedRose app = new GildedRose(items);
+            var name = new List<string>() {"foo", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert", "Sulfuras, Hand of Ragnaros"};
+            var sellIn = new List<int>() {-1, 0, 2, 6, 11};
+            var quality = new List<int>() {0, 49, 50};
+            
+            CombinationApprovals.VerifyAllCombinations(
+                ExecuteUpdateQuality,
+                name,
+                sellIn,
+                quality);
+        }
+
+        private string ExecuteUpdateQuality(string name, int sellIn, int quality)
+        {
+            var items = new List<Item> {new Item {Name = name, SellIn = sellIn, Quality = quality}};
+            var app = new GildedRose(items);
             app.UpdateQuality();
-            string itemString = items[0].Name.ToString();
-            Approvals.Verify(itemString);
+            return items[0].ToString();
         }
     }
 }
