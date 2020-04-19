@@ -56,22 +56,19 @@ namespace GildedRose
                     {
                         item.Quality = item.Quality + 1;
 
-                        if (true)
+                        if (item.SellIn < 11)
                         {
-                            if (item.SellIn < 11)
+                            if (item.Quality < 50)
                             {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
+                                item.Quality = item.Quality + 1;
                             }
+                        }
 
-                            if (item.SellIn < 6)
+                        if (item.SellIn < 6)
+                        {
+                            if (item.Quality < 50)
                             {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
+                                item.Quality = item.Quality + 1;
                             }
                         }
                     }
