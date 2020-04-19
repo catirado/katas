@@ -23,7 +23,7 @@ namespace GildedRose
         {
             if (item.Name == "Aged Brie")
             {
-                if (false && item.Name != "Backstage passes to a TAFKAL80ETC concert")
+                if (false)
                 {
                     if (item.Quality > 0)
                     {
