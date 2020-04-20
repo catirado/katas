@@ -16,14 +16,9 @@ namespace GildedRose
         {
             foreach (var item in _items)
             {
-                UpdateQuality(item);
+                var updater = new QualityUpdaterFactory();
+                updater.UpdateFor(item);
             }
-        }
-
-        private static void UpdateQuality(Item item)
-        {
-            var updater = new QualityUpdaterFactory();
-            updater.UpdateFor(item);
         }
     }
 }
