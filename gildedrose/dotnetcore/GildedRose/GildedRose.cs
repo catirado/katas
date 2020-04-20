@@ -13,13 +13,13 @@ namespace GildedRose
 
         public void UpdateQuality()
         {
-            for (var i = 0; i < Items.Count; i++)
+            foreach (var item in Items)
             {
-                executeUpdateQuantity(Items[i]);
+                executeUpdateQuality(item);
             }
         }
 
-        private static void executeUpdateQuantity(Item item)
+        private static void executeUpdateQuality(Item item)
         {
             switch (item.Name)
             {
