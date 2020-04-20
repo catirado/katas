@@ -4,22 +4,22 @@ namespace GildedRose
 {
     public class GildedRose
     {
-        IList<Item> Items;
+        private readonly IList<Item> _items;
 
         public GildedRose(IList<Item> items)
         {
-            this.Items = items;
+            _items = items;
         }
 
         public void UpdateQuality()
         {
-            foreach (var item in Items)
+            foreach (var item in _items)
             {
-                executeUpdateQuality(item);
+                ExecuteUpdateQuality(item);
             }
         }
 
-        private static void executeUpdateQuality(Item item)
+        private static void ExecuteUpdateQuality(Item item)
         {
             switch (item.Name)
             {
