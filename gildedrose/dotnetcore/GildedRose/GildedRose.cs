@@ -38,59 +38,53 @@ namespace GildedRose
                     }
                 }
             }
-            else
+            else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
             {
-                if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                if (item.Quality < 50)
                 {
-                    if (item.Quality < 50)
+                    item.Quality = item.Quality + 1;
+
+                    if (item.SellIn < 11)
                     {
-                        item.Quality = item.Quality + 1;
-
-                        if (item.SellIn < 11)
+                        if (item.Quality < 50)
                         {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
-                        }
-
-                        if (item.SellIn < 6)
-                        {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
+                            item.Quality = item.Quality + 1;
                         }
                     }
-                    
-                    item.SellIn = item.SellIn - 1;
-                    
-                    if (item.SellIn < 0)
+
+                    if (item.SellIn < 6)
                     {
-                        item.Quality = 0;
+                        if (item.Quality < 50)
+                        {
+                            item.Quality = item.Quality + 1;
+                        }
                     }
                 }
-                else
+
+                item.SellIn = item.SellIn - 1;
+
+                if (item.SellIn < 0)
                 {
-                    if (item.Name == "Sulfuras, Hand of Ragnaros")
+                    item.Quality = 0;
+                }
+            }
+            else if (item.Name == "Sulfuras, Hand of Ragnaros")
+            {
+            }
+            else
+            {
+                if (item.Quality > 0)
+                {
+                    item.Quality = item.Quality - 1;
+                }
+
+                item.SellIn = item.SellIn - 1;
+
+                if (item.SellIn < 0)
+                {
+                    if (item.Quality > 0)
                     {
-                    }
-                    else
-                    {
-                        if (item.Quality > 0)
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
-                        
-                        item.SellIn = item.SellIn - 1;
-                        
-                        if (item.SellIn < 0)
-                        {
-                            if (item.Quality > 0)
-                            {
-                                item.Quality = item.Quality - 1;
-                            }
-                        }
+                        item.Quality = item.Quality - 1;
                     }
                 }
             }
