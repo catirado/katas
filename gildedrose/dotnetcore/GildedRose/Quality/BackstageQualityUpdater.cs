@@ -4,20 +4,27 @@ namespace GildedRose.Quality
     {
         public override void UpdateQuality(Item item)
         {
-            if (item.Quality < 50)
+            IncreaseQualityBy(item, 1);
+
+            if (item.SellIn < 11)
             {
-                item.Quality = item.Quality + 1;
-
-                if (item.SellIn < 11)
-                    if (item.Quality < 50)
-                        item.Quality = item.Quality + 1;
-
-                if (item.SellIn < 6)
-                    if (item.Quality < 50)
-                        item.Quality = item.Quality + 1;
+                IncreaseQualityBy(item, 1);
             }
 
-            if (item.SellIn <= 0) item.Quality = 0;
+            if (item.SellIn < 6)
+            {
+                IncreaseQualityBy(item, 1);
+            }
+
+            if (item.SellIn <= 0)
+            {
+                SetQualityToZero(item);
+            }
+        }
+
+        private static void SetQualityToZero(Item item)
+        {
+            item.Quality = 0;
         }
     }
 }
