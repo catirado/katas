@@ -27,7 +27,7 @@ namespace GildedRose.Quality
                 return DOUBLE_QUALITY_INCREASE;
             }
 
-            if (ConcertIsFiveDaysOrLess(item))
+            if (ConcertIsInFiveDaysOrLess(item))
             {
                 return TRIPLE_QUALITY_INCREASE;
             }
@@ -35,7 +35,7 @@ namespace GildedRose.Quality
             return DEFAULT_QUALITY_INCREASE;
         }
 
-        private bool ConcertIsFiveDaysOrLess(Item item)
+        private bool ConcertIsInFiveDaysOrLess(Item item)
         {
             return item.SellIn <= FIVE_DAYS;
         }
