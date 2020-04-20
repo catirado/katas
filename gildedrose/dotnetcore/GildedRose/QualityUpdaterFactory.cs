@@ -17,7 +17,8 @@ namespace GildedRose
             {
                 case AGED_BRIE_NAME:
                 {
-                    ProcessAgedBrie(item);
+                    var updater = new AgedBrieUpdater();
+                    updater.update(item);
                     break;
                 }
                 case BACKSTAGE_NAME:
@@ -88,12 +89,6 @@ namespace GildedRose
             {
                 item.Quality = 0;
             }
-        }
-
-        private void ProcessAgedBrie(Item item)
-        {
-            var updater = new AgedBrieUpdater();
-            updater.update(item);
         }
     }
 }
