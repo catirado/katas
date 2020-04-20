@@ -1,8 +1,13 @@
 namespace GildedRose
 {
-    public class SulfurasUpdater : IItemUpdater
+    public class SulfurasUpdater : ItemUpdater
     {
-        public void Update(Item item)
+        public override void UpdateQuality(Item item)
+        {
+            // do nothing
+        }
+        
+        public override void UpdateSellIn(Item item)
         {
             // do nothing
         }

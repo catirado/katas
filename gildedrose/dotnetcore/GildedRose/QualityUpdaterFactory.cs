@@ -8,14 +8,15 @@ namespace GildedRose
 
         public void Execute(Item item)
         {
-            IItemUpdater updater = item.Name switch
+            ItemUpdater updater = item.Name switch
             {
                 AGED_BRIE_NAME => new AgedBrieUpdater(),
                 BACKSTAGE_NAME => new BackstageUpdater(),
                 SULFURAS_NAME => new SulfurasUpdater(),
                 _ => new NormalUpdater()
             };
-            updater.Update(item);
+            updater.UpdateQuality(item);
+            updater.UpdateSellIn(item);
         }
     }
 }

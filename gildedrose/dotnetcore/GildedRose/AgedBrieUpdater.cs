@@ -1,17 +1,15 @@
 namespace GildedRose
 {
-    internal class AgedBrieUpdater : IItemUpdater
+    internal class AgedBrieUpdater : ItemUpdater
     {
-        public void Update(Item item)
+        public override void UpdateQuality(Item item)
         {
             if (item.Quality < 50)
             {
                 item.Quality = item.Quality + 1;
             }
 
-            item.SellIn = item.SellIn - 1;
-
-            if (item.SellIn < 0)
+            if (item.SellIn <= 0)
             {
                 if (item.Quality < 50)
                 {

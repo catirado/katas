@@ -1,8 +1,8 @@
 namespace GildedRose
 {
-    public class BackstageUpdater : IItemUpdater
+    public class BackstageUpdater : ItemUpdater
     {
-        public void Update(Item item)
+        public override void UpdateQuality(Item item)
         {
             if (item.Quality < 50)
             {
@@ -25,9 +25,7 @@ namespace GildedRose
                 }
             }
 
-            item.SellIn = item.SellIn - 1;
-
-            if (item.SellIn < 0)
+            if (item.SellIn <= 0)
             {
                 item.Quality = 0;
             }

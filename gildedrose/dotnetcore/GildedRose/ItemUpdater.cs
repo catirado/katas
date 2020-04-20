@@ -1,7 +1,12 @@
 namespace GildedRose
 {
-    public interface IItemUpdater
+    public abstract class ItemUpdater
     {
-        void Update(Item item);
+        public abstract void UpdateQuality(Item item);
+
+        public virtual void UpdateSellIn(Item item)
+        {
+            item.SellIn -= 1;
+        }
     }
 }
