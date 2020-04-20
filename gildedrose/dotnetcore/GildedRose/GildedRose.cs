@@ -21,30 +21,18 @@ namespace GildedRose
 
         private static void executeUpdateQuantity(Item item)
         {
-            if (item.Name == "Aged Brie")
+            switch (item.Name)
             {
-                if (item.Quality < 50)
-                {
-                    item.Quality = item.Quality + 1;
-                }
-
-                item.SellIn = item.SellIn - 1;
-
-                if (item.SellIn < 0)
+                case "Aged Brie":
                 {
                     if (item.Quality < 50)
                     {
                         item.Quality = item.Quality + 1;
                     }
-                }
-            }
-            else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
-            {
-                if (item.Quality < 50)
-                {
-                    item.Quality = item.Quality + 1;
 
-                    if (item.SellIn < 11)
+                    item.SellIn = item.SellIn - 1;
+
+                    if (item.SellIn < 0)
                     {
                         if (item.Quality < 50)
                         {
@@ -52,40 +40,60 @@ namespace GildedRose
                         }
                     }
 
-                    if (item.SellIn < 6)
+                    break;
+                }
+                case "Backstage passes to a TAFKAL80ETC concert":
+                {
+                    if (item.Quality < 50)
                     {
-                        if (item.Quality < 50)
+                        item.Quality = item.Quality + 1;
+
+                        if (item.SellIn < 11)
                         {
-                            item.Quality = item.Quality + 1;
+                            if (item.Quality < 50)
+                            {
+                                item.Quality = item.Quality + 1;
+                            }
+                        }
+
+                        if (item.SellIn < 6)
+                        {
+                            if (item.Quality < 50)
+                            {
+                                item.Quality = item.Quality + 1;
+                            }
                         }
                     }
+
+                    item.SellIn = item.SellIn - 1;
+
+                    if (item.SellIn < 0)
+                    {
+                        item.Quality = 0;
+                    }
+
+                    break;
                 }
-
-                item.SellIn = item.SellIn - 1;
-
-                if (item.SellIn < 0)
-                {
-                    item.Quality = 0;
-                }
-            }
-            else if (item.Name == "Sulfuras, Hand of Ragnaros")
-            {
-            }
-            else
-            {
-                if (item.Quality > 0)
-                {
-                    item.Quality = item.Quality - 1;
-                }
-
-                item.SellIn = item.SellIn - 1;
-
-                if (item.SellIn < 0)
+                case "Sulfuras, Hand of Ragnaros":
+                    break;
+                default:
                 {
                     if (item.Quality > 0)
                     {
                         item.Quality = item.Quality - 1;
                     }
+
+                    item.SellIn = item.SellIn - 1;
+
+                    if (item.SellIn < 0)
+                    {
+                        if (item.Quality > 0)
+                        {
+                            item.Quality = item.Quality - 1;
+                        }
+                    }
+
+                    break;
                 }
             }
         }
