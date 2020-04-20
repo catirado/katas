@@ -6,7 +6,7 @@ namespace GildedRose.Tests
 {
     public class gilded_rose_should
     {
-        private static int EXPIRED = -1;
+        private static int SELL_DATE_HAS_PASSSED = -1;
         
         [Fact]
         public void decrease_by_one_the_quality_of_normal_items()
@@ -43,7 +43,7 @@ namespace GildedRose.Tests
         {
             var normalItem = Builder.Item.WithName("foo")
                 .WithQuality(2)
-                .WithSellIn(EXPIRED)
+                .WithSellIn(SELL_DATE_HAS_PASSSED)
                 .Build();
 
             var items = new List<Item>() {normalItem};
@@ -89,7 +89,7 @@ namespace GildedRose.Tests
         {
             var agedBrie = Builder.Item.WithName("Aged Brie")
                 .WithQuality(48)
-                .WithSellIn(EXPIRED)
+                .WithSellIn(SELL_DATE_HAS_PASSSED)
                 .Build();
             
             var items = new List<Item>() {agedBrie};
