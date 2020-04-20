@@ -1,6 +1,5 @@
 ﻿using Xunit;
 using System.Collections.Generic;
-using ApprovalTests;
 using ApprovalTests.Combinations;
 using ApprovalTests.Reporters;
 
