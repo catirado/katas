@@ -27,7 +27,7 @@ namespace GildedRose.Tests
             var items = new List<Item> {new Item {Name = name, SellIn = sellIn, Quality = quality}};
             var app = new GildedRose(items);
             app.UpdateQuality();
-            return items[0].ToString();
+            return items[0].ToDescription();
         }
     }
 }
