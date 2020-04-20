@@ -8,34 +8,14 @@ namespace GildedRose
 
         public void Execute(Item item)
         {
-            IItemUpdater updater;
-            switch (item.Name)
+            IItemUpdater updater = item.Name switch
             {
-                case AGED_BRIE_NAME:
-                {
-                    updater = new AgedBrieUpdater();
-                    break;
-                }
-                case BACKSTAGE_NAME:
-                {
-                    updater = new BackstageUpdater();
-                    break;
-                }
-                case SULFURAS_NAME:
-                    updater = new SulfurasUpdater();
-                    break;
-                default:
-                {
-                    updater = new NormalUpdater();
-                    break;
-                }
-            }
+                AGED_BRIE_NAME => new AgedBrieUpdater(),
+                BACKSTAGE_NAME => new BackstageUpdater(),
+                SULFURAS_NAME => new SulfurasUpdater(),
+                _ => new NormalUpdater()
+            };
             updater.Update(item);
-        }
-
-        private void ProcessNormal(Item item)
-        {
-            
         }
     }
 }
