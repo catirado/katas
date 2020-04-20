@@ -45,7 +45,7 @@ namespace GildedRose
                 Console.WriteLine("name, sellIn, quality");
                 for (var j = 0; j < items.Count; j++)
                 {
-                    System.Console.WriteLine(items[j].Name + ", " + items[j].SellIn + ", " + items[j].Quality);
+                    Console.WriteLine(items[j].Name + ", " + items[j].SellIn + ", " + items[j].Quality);
                 }
                 Console.WriteLine("");
                 app.UpdateQuality();

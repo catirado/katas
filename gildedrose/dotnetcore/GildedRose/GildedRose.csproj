@@ -10,7 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Inventory" />
     <Folder Include="Quality" />
   </ItemGroup>
 </Project>

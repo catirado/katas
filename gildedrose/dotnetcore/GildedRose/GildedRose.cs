@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GildedRose.Quality;
 
 namespace GildedRose
 {
@@ -22,7 +23,7 @@ namespace GildedRose
         private static void UpdateQuality(Item item)
         {
             var updater = new QualityUpdaterFactory();
-            updater.Execute(item);
+            updater.UpdateFor(item);
         }
     }
 }

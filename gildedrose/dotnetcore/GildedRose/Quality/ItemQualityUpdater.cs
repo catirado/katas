@@ -1,6 +1,6 @@
-namespace GildedRose
+namespace GildedRose.Quality
 {
-    public abstract class ItemUpdater
+    public abstract class ItemQualityUpdater
     {
         public abstract void UpdateQuality(Item item);
 

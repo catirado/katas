@@ -1,6 +1,6 @@
-namespace GildedRose
+namespace GildedRose.Quality
 {
-    public class BackstageUpdater : ItemUpdater
+    public class BackstageQualityUpdater : ItemQualityUpdater
     {
         public override void UpdateQuality(Item item)
         {
@@ -9,26 +9,15 @@ namespace GildedRose
                 item.Quality = item.Quality + 1;
 
                 if (item.SellIn < 11)
-                {
                     if (item.Quality < 50)
-                    {
                         item.Quality = item.Quality + 1;
-                    }
-                }
 
                 if (item.SellIn < 6)
-                {
                     if (item.Quality < 50)
-                    {
                         item.Quality = item.Quality + 1;
-                    }
-                }
             }
 
-            if (item.SellIn <= 0)
-            {
-                item.Quality = 0;
-            }
+            if (item.SellIn <= 0) item.Quality = 0;
         }
     }
 }
