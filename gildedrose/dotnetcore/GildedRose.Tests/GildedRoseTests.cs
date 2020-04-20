@@ -85,6 +85,22 @@ namespace GildedRose.Tests
         }
 
         [Fact]
+        public void increase_the_quality_of_aged_brie_by_two_when_the_sell_date_has_passed()
+        {
+            var agedBrie = Builder.Item.WithName("Aged Brie")
+                .WithQuality(48)
+                .WithSellIn(EXPIRED)
+                .Build();
+            
+            var items = new List<Item>() {agedBrie};
+            
+            var gildedRose = new GildedRose(items);
+            gildedRose.UpdateQuality();
+
+            agedBrie.Quality.Should().Be(50);
+        }
+
+        [Fact]
         public void not_increase_the_quality_of_aged_brie_more_than_fifty()
         {
             var agedBrie = Builder.Item.WithName("Aged Brie")
