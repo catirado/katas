@@ -8,8 +8,4 @@
     <RootNamespace>GildedRose</RootNamespace>
     <LangVersion>8</LangVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Quality" />
-  </ItemGroup>
 </Project>

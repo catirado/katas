@@ -223,5 +223,20 @@ namespace GildedRose.Tests
 
             backstage.Quality.Should().Be(50);
         }
+
+        [Fact]
+        public void decrease_the_quality_of_conjured_twice_as_fast_as_normal_items()
+        {
+            var conjured = Builder.Item.WithName("Conjured Mana Cake")
+                .WithQuality(2)
+                .Build();
+
+            var items = new List<Item>() {conjured};
+            
+            var gildedRose = new GildedRose(items);
+            gildedRose.UpdateQuality();
+
+            conjured.Quality.Should().Be(0);
+        }
     }
 }
