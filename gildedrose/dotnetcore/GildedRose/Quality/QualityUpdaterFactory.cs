@@ -9,6 +9,13 @@ namespace GildedRose.Quality
 
         public void UpdateFor(Item item)
         {
+            var qualityUpdater = GetUpdater(item);
+            qualityUpdater.UpdateQuality(item);
+            qualityUpdater.UpdateSellIn(item);
+        }
+
+        private static ItemQualityUpdater GetUpdater(Item item)
+        {
             ItemQualityUpdater qualityUpdater = item.Name switch
             {
                 AGED_BRIE_NAME => new AgedBrieQualityUpdater(),
@@ -17,8 +24,7 @@ namespace GildedRose.Quality
                 SULFURAS_NAME => new SulfurasQualityUpdater(),
                 _ => new NormalQualityUpdater()
             };
-            qualityUpdater.UpdateQuality(item);
-            qualityUpdater.UpdateSellIn(item);
+            return qualityUpdater;
         }
     }
 }
