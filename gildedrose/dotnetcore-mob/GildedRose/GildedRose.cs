@@ -21,6 +21,7 @@ namespace GildedRose
 
         private static void UpdateQuality(Item item)
         {
+            var updater = new Updater();
             switch (item.Name)
             {
                 case "Aged Brie":
@@ -78,22 +79,29 @@ namespace GildedRose
                     break;
                 default:
                 {
-                    if (item.Quality > 0)
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
-
-                    item.SellIn = item.SellIn - 1;
-
-                    if (item.SellIn < 0)
-                    {
-                        if (item.Quality > 0)
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
-                    }
-
+                    updater.Update(item);
                     break;
+                }
+            }
+        }
+    }
+
+    internal class Updater
+    {
+        public void Update(Item item)
+        {
+            if (item.Quality > 0)
+            {
+                item.Quality = item.Quality - 1;
+            }
+
+            item.SellIn = item.SellIn - 1;
+
+            if (item.SellIn < 0)
+            {
+                if (item.Quality > 0)
+                {
+                    item.Quality = item.Quality - 1;
                 }
             }
         }
