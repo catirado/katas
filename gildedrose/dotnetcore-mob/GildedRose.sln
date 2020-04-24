@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.Tests", "GildedRose.Tests\GildedRose.Tests.csproj", "{0F93762F-42E4-4DE1-9E94-B7B949499054}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose", "GildedRose\GildedRose.csproj", "{1EFBD94B-2DA0-4405-A0B9-BD41C9C5E038}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F93762F-42E4-4DE1-9E94-B7B949499054}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F93762F-42E4-4DE1-9E94-B7B949499054}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F93762F-42E4-4DE1-9E94-B7B949499054}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F93762F-42E4-4DE1-9E94-B7B949499054}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EFBD94B-2DA0-4405-A0B9-BD41C9C5E038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EFBD94B-2DA0-4405-A0B9-BD41C9C5E038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EFBD94B-2DA0-4405-A0B9-BD41C9C5E038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EFBD94B-2DA0-4405-A0B9-BD41C9C5E038}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
